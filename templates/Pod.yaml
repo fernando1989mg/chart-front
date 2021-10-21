@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fullname }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: front
+  template:
+    metadata:
+      labels:
+        role: front
+    spec:
+      containers:
+      - name: front
+        imagePullPolicy: Never
+        image: fernando1989mg/front2:latest
+        ports:
+        - containerPort: 80
